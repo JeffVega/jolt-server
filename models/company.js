@@ -1,4 +1,4 @@
-const mongoose = requier('mongoose');
+const mongoose = require('mongoose');
 const moment = require('moment');
 const {Schema} = mongoose;
 
@@ -11,8 +11,9 @@ const CompanySchema = new Schema({
         default:false
     },
     notes:String,
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     created:{
-        type:Date,
+        type:String,
         default:moment((Date.now())).format('hh:mmA MM/DD/YY')
     }
 
