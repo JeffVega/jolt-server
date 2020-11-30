@@ -1,5 +1,6 @@
 const express = require('express');
 
+require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
@@ -7,12 +8,12 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const JobRouter = require('./routes/job');
 const authRouter = require('./routes/auth');
-const {PORT,DATABASE} = require('./config');
+const {PORT,DATABASE,JWT_EXPIRY} = require('./config');
 const passport = require('passport');
 const localStrategy = require('./passport/local');
 const jwtStrategy = require('./passport/jwt');
 const cors = require('cors')
-require('dotenv').config();
+console.log(require('dotenv').config())
 
 const app = express();
 mongoose.connect(DATABASE, {useNewUrlParser: true,useUnifiedTopology:true},()=>{
@@ -27,7 +28,7 @@ app.use(express.urlencoded({ extended: false }));
 // app.use(bodyParser.json());
 // app.use(passport.initialize());
 
-
+console.log(JWT_EXPIRY )
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 // app.use('/api', indexRouter);
