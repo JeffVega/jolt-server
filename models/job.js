@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const moment = require('moment');
 const {Schema} = mongoose;
 
-const CompanySchema = new Schema({
+const JobSchema = new Schema({
     name:String,
     website:String,
     position:String,
@@ -19,4 +19,4 @@ const CompanySchema = new Schema({
 
 })
 
-module.exports = mongoose.model('Company',CompanySchema);
+module.exports = mongoose.model('Job',JobSchema);
